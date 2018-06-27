@@ -1,0 +1,131 @@
+{
+    "id": "TEST 1",
+    "type": "sequence",
+    "steps": [
+        {
+            "id": "1a",
+            "name": "Welcome",
+            "next": "2a",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "Bem-vindo!"
+            }
+        },
+        {
+            "id": "2a",
+            "name": "Name",
+            "next": "3a",
+            "type": "smarkioJump",
+            "data": {
+                "text": "Fornecer nome4."
+            }
+        },
+        {
+            "id": "3a",
+            "name": "age",
+            "next": "4a",
+            "type": "smarkioJump",
+            "data": {
+                "text": "Idade.",
+                "targetRules": [
+                    {
+                        "step": "4a",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$terms\",\"value\":\"yes\",\"relativeAction\":\"action-591ec8ea591a43-96422857\"},\"operands\":[\"$terms\",\"yes\"],\"type\":\"\"}"
+                    },
+                    {
+                        "step": "5a",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$terms\",\"value\":\"no\",\"relativeAction\":\"action-591ec8ea591a43-96422857\"},\"operands\":[\"$terms\",\"no\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "4a",
+            "name": "maior18",
+            "next": "6a",
+            "type": "smarkioJump",
+            "data": {
+                "text": "Maior que 18 anos."
+            }
+        },
+        {
+            "id": "5a",
+            "name": "menor18",
+            "next": "7a",
+            "type": "smarkioJump",
+            "data": {
+                "text": "Menor que 18 anos."
+            }
+        },
+        {
+            "id": "6a",
+            "name": "maior18email",
+            "next": "8a",
+            "type": "smarkioJump",
+            "data": {
+                "text": "Poderia dar-me o seu email?",
+                "targetRules": [
+                    {
+                        "step": "8a",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$terms\",\"value\":\"yes\",\"relativeAction\":\"action-591ec8ea591a43-96422857\"},\"operands\":[\"$terms\",\"yes\"],\"type\":\"\"}"
+                    },
+                    {
+                        "step": "9a",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$terms\",\"value\":\"no\",\"relativeAction\":\"action-591ec8ea591a43-96422857\"},\"operands\":[\"$terms\",\"no\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "7a",
+            "name": "menor18email",
+            "next": "8a",
+            "type": "smarkioJump",
+            "data": {
+                "text": "Yo, queres-me dar o teu email?",
+                "targetRules": [
+                    {
+                        "step": "8a",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$terms\",\"value\":\"yes\",\"relativeAction\":\"action-591ec8ea591a43-96422857\"},\"operands\":[\"$terms\",\"yes\"],\"type\":\"\"}"
+                    },
+                    {
+                        "step": "9a",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$terms\",\"value\":\"no\",\"relativeAction\":\"action-591ec8ea591a43-96422857\"},\"operands\":[\"$terms\",\"no\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "8a",
+            "name": "daremail",
+            "next": "9a",
+            "type": "smarkioJump",
+            "data": {
+                "text": "Fornecer email."
+            }
+        },
+        {
+            "id": "9a",
+            "name": "obrigado",
+            "next": "10a",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "Obrigado pelo seu tempo."
+            }
+        },
+        {
+            "id": "10a",
+            "name": "Fim",
+            "next": null,
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "A nossa conversa terminou."
+            }
+        }
+    ],
+    "data": {
+        "name": "TEST 1",
+        "version": 11,
+        "chatVersion": 1
+    }
+}

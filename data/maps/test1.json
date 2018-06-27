@@ -1,0 +1,65 @@
+{
+    "id": "TEST 1",
+    "type": "sequence",
+    "steps": [
+        {
+            "id": "1a",
+            "name": "Welcome",
+            "next": "2a",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "Bem-vindo!"
+            }
+        },
+        {
+            "id": "2a",
+            "name": "Name",
+            "next": "3a",
+            "type": "smarkioJump",
+            "data": {
+                "text": "Fornecer nome."
+            }
+        },
+        {
+            "id": "3a",
+            "name": "Postalcode",
+            "next": "4a",
+            "type": "smarkioJump",
+            "data": {
+                "text": "Fornecer código postal."
+            }
+        },
+        {
+            "id": "4a",
+            "name": "Address",
+            "next": "5a",
+            "type": "smarkioJump",
+            "data": {
+                "text": "Fornecer morada."
+            }
+        },
+        {
+            "id": "5a",
+            "name": "Email",
+            "next": "6a",
+            "type": "smarkioJump",
+            "data": {
+                "text": "Fornecer email."
+            }
+        },
+        {
+            "id": "6a",
+            "name": "Fim",
+            "next": null,
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "Obrigado pelo seu tempo."
+            }
+        }
+    ],
+    "data": {
+        "name": "TEST 1",
+        "version": 11,
+        "chatVersion": 1
+    }
+}
