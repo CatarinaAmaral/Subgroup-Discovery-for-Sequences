@@ -17,7 +17,7 @@ class SecondApproach:
         self.rules = rules_ids
         self.criterion = criterion
         # input parameters
-        self.min_sup = 0
+        self.min_sup = 0.01
         self.min_pattern_length = 0
         self.max_pattern_length = 1000 
         self.pattern_count = 0 # initialize the number of patterns found
@@ -65,6 +65,9 @@ class SecondApproach:
         
     # Second approach algorithm
     def second_approach_algorithm(self, input_logs, min_sup_rel, pass_next_level):
+        if min_sup_rel == None:
+            min_sup_rel = self.min_sup
+        
         #STEP 0: SCAN THE DATABASE TO STORE THE FIRST BIT POSITION OF EACH SEQUENCE AND CALCULATE THE TOTAL NUMBER OF BIT FOR EACH BITMAP
         bit_index = 0
         for (idx, row) in input_logs.iterrows():
@@ -196,32 +199,47 @@ class SecondApproach:
           
 if __name__ == '__main__':
     
-    file = '3222'
+    file = 'test1'
+    max_gap = None # number or None
+    min_pattern_length = 2
+    max_pattern_length = None # number or None
+    min_sup = 0.1
+    beam_width = 1
     data_preparation = DataPreparation(file)
     logs = data_preparation.logs_preparation()
     rules = data_preparation.rules_preparation()    
     indicators = data_preparation.indexes_preparation(rules)
     rules_ids = data_preparation.rules_to_ids(rules)
     
-    ind = '16'
-    logs = logs.reset_index()
+    ind = '3'
+    logs = logs.reset_index()    
     
-    #GLOBAL
-    second_approach = SecondApproach(file, indicators, logs, rules_ids, 'global_criterion_' + ind)
-    #LOCAL
-    #second_approach = SecondApproach(file, indicators, logs, rules_ids, 'local_criterion_' + ind)
-    #DROPOUT GLOBAL - 'drop_global_average' or 'drop_global_min'
-    #second_approach = SecondApproach(file, indicators, logs, rules_ids, 'drop_global_average')
-    #DROPOUT Local
-    #second_approach = SecondApproach(file, indicators, logs, rules_ids, 'drop_local')
+    measure = 'global'
+    if measure == 'global':
+        second_approach = SecondApproach(file, indicators, logs, rules_ids, 'global_criterion_' + ind)
+    elif measure == 'local':
+        second_approach = SecondApproach(file, indicators, logs, rules_ids, 'local_criterion_' + ind)
+    elif measure == 'drop_global_average':
+        second_approach = SecondApproach(file, indicators, logs, rules_ids, 'drop_global_average')
+    elif measure == 'drop_global_min':
+        second_approach = SecondApproach(file, indicators, logs, rules_ids, 'drop_global_min')
+    elif measure == 'drop_local':
+        second_approach = SecondApproach(file, indicators, logs, rules_ids, 'drop_local')
+    else:
+        print('Measure of interest does not exist')
+        sys.exit()
     
-    second_approach.set_max_gap(1)
-    second_approach.set_min_pattern_length(2)
-    second_approach.set_max_pattern_length(3)
+    if max_gap != None:
+        second_approach.set_max_gap(max_gap)
+    second_approach.set_min_pattern_length(min_pattern_length)
+    if max_pattern_length != None:
+        second_approach.set_max_pattern_length(max_pattern_length)
     
-    second_approach.second_approach_algorithm(logs, 0.5, 1)
+    second_approach.second_approach_algorithm(logs, min_sup, beam_width)
+    
     patterns = second_approach.cleaning_results()
     
+    patterns.to_csv('../results-second_approach/'+file+'_ind='+ind+'_max-gap='+str(max_gap)+'_min-length='+str(min_pattern_length)+'_max-length='+str(max_pattern_length)+'_min-sup='+str(min_sup)+'_'+measure+'.csv')
         
     
     
