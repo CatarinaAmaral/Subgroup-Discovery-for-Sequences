@@ -1,0 +1,643 @@
+{
+    "id": "EKPT-Cr\u00e9dito Consolidado-100 Cr\u00e9ditos",
+    "type": "sequence",
+    "steps": [
+        {
+            "id": "action-5a145e0bdb7670-00175446",
+            "name": "0001 - Escrever: Texto ou HTML",
+            "next": "1511284368125-sb0j-qhth-e3dm",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "Ol\u00e1, chamo-me Beatriz Silva e sou consultora financeira no <b>E-konomista<\/b>.  Vou acompanhar a simula\u00e7\u00e3o e garantir que tem acesso \u00e0 melhor oferta de cr\u00e9dito consolidado."
+            }
+        },
+        {
+            "id": "1511284368125-sb0j-qhth-e3dm",
+            "name": "0002 - Escrever: Texto ou HTML",
+            "next": "action-5a145e0bdb76e3-19060063",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "O cr\u00e9dito consolidado \u00e9 um produto que permite juntar todos os seus cr\u00e9ditos num s\u00f3. E com um boa solu\u00e7\u00e3o de cr\u00e9dito consolidado pode conseguir poupar at\u00e9 60% o valor das suas presta\u00e7\u00f5es."
+            }
+        },
+        {
+            "id": "action-5a145e0bdb76e3-19060063",
+            "name": "0003 - Navega\u00e7\u00e3o: Atrasar pr\u00f3xima a\u00e7\u00e3o",
+            "type": "smarkioDelay",
+            "next": "action-5a145e0bdb7718-67297408",
+            "data": {
+                "delay": 1
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7718-67297408",
+            "name": "0004 - Perguntar: Slider",
+            "type": "smarkioSlider",
+            "varname": "credit_type",
+            "next": "1515425668661-wp57-c4cq-vk5r",
+            "data": {
+                "type": "slider",
+                "text": "Quantos cr\u00e9ditos possui atualmente?",
+                "min_value": 2,
+                "max_value": 10,
+                "min_label": "2",
+                "max_label": "10",
+                "step_size": 1,
+                "initial_value": 3
+            }
+        },
+        {
+            "id": "1515425668661-wp57-c4cq-vk5r",
+            "name": "0005 - Google Analytics: Disparar Evento",
+            "type": "smarkioGoogleAnalyticsEvent",
+            "next": "action-5a145e0bdb76f3-86182631",
+            "data": {
+                "event_category": "credito_consolidado",
+                "event_action": "credit_type",
+                "event_label": null,
+                "event_value": null,
+                "analytics_id": ""
+            }
+        },
+        {
+            "id": "action-5a145e0bdb76f3-86182631",
+            "name": "0006 - Perguntar: Slider",
+            "type": "smarkioSlider",
+            "varname": "credit_value_wanted",
+            "next": "1515425697133-z2kv-m3el-auhq",
+            "data": {
+                "type": "slider",
+                "text": "Indique por favor o montante total de todos os seus cr\u00e9ditos (aproximadamente):",
+                "min_value": 5000,
+                "max_value": 200000,
+                "min_label": "5000",
+                "max_label": "200000",
+                "step_size": 1000,
+                "initial_value": 20000
+            }
+        },
+        {
+            "id": "1515425697133-z2kv-m3el-auhq",
+            "name": "0007 - Google Analytics: Disparar Evento",
+            "type": "smarkioGoogleAnalyticsEvent",
+            "next": "action-5a145e0bdb7729-56961761",
+            "data": {
+                "event_category": "credito_consolidado",
+                "event_action": "credit_value_wanted",
+                "event_label": null,
+                "event_value": null,
+                "analytics_id": ""
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7729-56961761",
+            "name": "0008 - Perguntar: Lista de Op\u00e7\u00f5es",
+            "type": "smarkioOptions",
+            "varname": "credit_due_payments",
+            "next": "1515425722346-rtrl-oufx-tajm",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "N\u00e3o tenho.": "0",
+                    "Sim, tenho presta\u00e7\u00f5es em atraso.": "1"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "Tem presta\u00e7\u00f5es em atraso em algum desses cr\u00e9ditos?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "1515425722346-rtrl-oufx-tajm",
+            "name": "0009 - Google Analytics: Disparar Evento",
+            "type": "smarkioGoogleAnalyticsEvent",
+            "next": "action-5a145e0bdb7730-93500570",
+            "data": {
+                "event_category": "credito_consolidado",
+                "event_action": "credit_due_payments",
+                "event_label": null,
+                "event_value": null,
+                "analytics_id": ""
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7730-93500570",
+            "name": "0010 - Escrever: Texto ou HTML",
+            "next": "action-5a145e0bdb7860-90059012",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "Muito bem. Por quest\u00f5es de privacidade, e para sua seguran\u00e7a, ao continuar a simula\u00e7\u00e3o est\u00e1 a concordar com os <a style=\"color: #464646\" href=\"http:\/\/www.e-konomista.pt\/politica-de-privacidade-de-cookies\/\" target=\"_blank\">termos e condi\u00e7\u00f5es<\/a> desta campanha que indicam que o E-konomista e parceiros financeiros podem eventualmente entrar em contacto consigo."
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7860-90059012",
+            "name": "0011 - Perguntar: Lista de Op\u00e7\u00f5es",
+            "type": "smarkioOptions",
+            "varname": "gender",
+            "next": "action-5a145e0bdb7878-84501867",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Homem": "M",
+                    "Mulher": "F"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "Antes de mais, diga-me s\u00f3. Tenho o prazer de estar a falar com um homem ou com uma mulher?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7878-84501867",
+            "name": "0012 - Perguntar: Texto",
+            "type": "prompt",
+            "varname": "firstname",
+            "next": "action-5a145e0bdb7891-52669745",
+            "additionalVarnames": [
+                "lead[first_name]"
+            ],
+            "data": {
+                "type": "text",
+                "text": "Muito bem. Diga-me, qual \u00e9 o seu primeiro nome?",
+                "validation": [
+                    {
+                        "type": "regex",
+                        "setup": {
+                            "pattern": "^[A-Za-z\\s\\u0410-\\u044F\\u0401\\u0451\\u00C0-\\u00FF\\u00B5\\u00B4\\u02CA\\u0060\\u02CB\\u005E\\u02C6\\u223C\\u007E\\u02DC\\u00BA\\u00AA]+$",
+                            "flags": null,
+                            "invalid_msg": "Apenas texto \u00e9 suportado"
+                        }
+                    },
+                    {
+                        "type": "length",
+                        "setup": {
+                            "min": null,
+                            "max": null,
+                            "invalid_msg": "Apenas texto \u00e9 suportado"
+                        }
+                    }
+                ],
+                "valueParser": [
+                    "trim"
+                ]
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7891-52669745",
+            "name": "0013 - Perguntar: Texto",
+            "type": "prompt",
+            "varname": "lastname",
+            "next": "1515425754710-g58y-x9hx-737w",
+            "additionalVarnames": [
+                "lead[last_name]"
+            ],
+            "data": {
+                "type": "text",
+                "text": "E qual \u00e9 o seu \u00faltimo nome, {{%firstname%}}?",
+                "validation": [
+                    {
+                        "type": "length",
+                        "setup": {
+                            "min": null,
+                            "max": null,
+                            "invalid_msg": "Ocorreu um erro"
+                        }
+                    }
+                ],
+                "valueParser": [
+                    "trim"
+                ]
+            }
+        },
+        {
+            "id": "1515425754710-g58y-x9hx-737w",
+            "name": "0014 - Google Analytics: Disparar Evento",
+            "type": "smarkioGoogleAnalyticsEvent",
+            "next": "action-5a145e0bdb78a5-22477229",
+            "data": {
+                "event_category": "credito_consolidado",
+                "event_action": "gender_name",
+                "event_label": null,
+                "event_value": null,
+                "analytics_id": ""
+            }
+        },
+        {
+            "id": "action-5a145e0bdb78a5-22477229",
+            "name": "0015 - Escrever: Texto ou HTML",
+            "next": "action-5a145e0bdb78b7-20944640",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "Muito prazer, {{%firstname%}} {{%lastname%}}."
+            }
+        },
+        {
+            "id": "action-5a145e0bdb78b7-20944640",
+            "name": "0016 - Perguntar: Lista de Op\u00e7\u00f5es",
+            "type": "smarkioOptions",
+            "varname": "job_type",
+            "next": "action-5a145e0bdb78c5-31910155",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Sim, trabalho.": "employed",
+                    "N\u00e3o trabalho.": "unemployed",
+                    "Estou na reforma.": "retired"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "Est\u00e1 a trabalhar?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-5a145e0bdb78c5-31910155",
+            "name": "0017 - Navega\u00e7\u00e3o: Mover para A\u00e7\u00e3o",
+            "type": "smarkioJump",
+            "next": "action-5a145e0bdb78d2-33626630",
+            "data": {
+                "nextStep": "action-5a145e0bdb78d2-33626630",
+                "targetRules": [
+                    {
+                        "step": "action-5a145e0bdb78f2-29821441",
+                        "condition": "{\"operator\":\"!=\",\"operand\":{\"key\":\"$job_type\",\"value\":\"employed\",\"relativeAction\":\"action-5a145e0bdb78b7-20944640\"},\"operands\":[\"$job_type\",\"employed\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-5a145e0bdb78d2-33626630",
+            "name": "0018 - Perguntar: Lista de Op\u00e7\u00f5es",
+            "type": "smarkioOptions",
+            "varname": "professional_status",
+            "next": "action-5a145e0bdb78f2-29821441",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Tenho contrato efetivo (sem termo)": "open-ended",
+                    "Tenho contrato tempor\u00e1rio (a termo)": "fixed-term",
+                    "Estou na reforma": "retired",
+                    "Outro": "other"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "E qual \u00e9 o seu tipo de contrato de trabalho, {{%firstname%}}?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-5a145e0bdb78f2-29821441",
+            "name": "0019 - Perguntar: Slider",
+            "type": "smarkioSlider",
+            "varname": "salary_value",
+            "next": "1515425835019-kskj-n2d5-cvig",
+            "data": {
+                "type": "slider",
+                "text": "Muito bem. Indique qual \u00e9 o vencimento mensal do seu agregado familiar?",
+                "min_value": 0,
+                "max_value": 2000,
+                "min_label": "0",
+                "max_label": "2000 ou mais",
+                "step_size": 50,
+                "initial_value": 500
+            }
+        },
+        {
+            "id": "1515425835019-kskj-n2d5-cvig",
+            "name": "0020 - Google Analytics: Disparar Evento",
+            "type": "smarkioGoogleAnalyticsEvent",
+            "next": "action-5a145e0bdb7900-56529572",
+            "data": {
+                "event_category": "credito_consolidado",
+                "event_action": "salary_value",
+                "event_label": null,
+                "event_value": null,
+                "analytics_id": ""
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7900-56529572",
+            "name": "0021 - Perguntar: Lista de Op\u00e7\u00f5es",
+            "type": "smarkioOptions",
+            "varname": "marital_status",
+            "next": "1515425846844-f4lj-sv3y-9j47",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Solteiro": "single",
+                    "Casado": "married",
+                    "Divorciado": "divorced",
+                    "Vi\u00favo": "widower"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "E qual \u00e9 o seu estado civil {{%firstname%}}?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "1515425846844-f4lj-sv3y-9j47",
+            "name": "0022 - Google Analytics: Disparar Evento",
+            "type": "smarkioGoogleAnalyticsEvent",
+            "next": "action-5a145e0bdb7916-81830554",
+            "data": {
+                "event_category": "credito_consolidado",
+                "event_action": "marital_status",
+                "event_label": null,
+                "event_value": null,
+                "analytics_id": ""
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7916-81830554",
+            "name": "0023 - Escrever: Texto ou HTML",
+            "next": "action-5a145e0bdb7926-28839365",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "Estamos quase a terminar."
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7926-28839365",
+            "name": "0024 - Perguntar: Data\/Hora",
+            "type": "prompt",
+            "varname": "birthdate",
+            "additionalVarnames": [
+                "lead[birth_date]"
+            ],
+            "next": "1515425810882-qjfw-3yv8-2g81",
+            "data": {
+                "type": "time",
+                "validation": {
+                    "type": "date",
+                    "setup": {
+                        "min_date": null,
+                        "max_date": null,
+                        "invalid_msg": "Ocorreu um erro"
+                    }
+                },
+                "options": {
+                    "retryPrompt": "Ocorreu um erro"
+                },
+                "valueParser": "smarkioDate",
+                "text": "Indique pf a sua data de nascimento. Primeiro escolha o ano, depois o m\u00eas e por \u00faltimo o dia. No fim, clique em \"Aceitar\".",
+                "link_to_lead": "lead[birth_date]",
+                "retryMessage": "Ocorreu um erro"
+            }
+        },
+        {
+            "id": "1515425810882-qjfw-3yv8-2g81",
+            "name": "0025 - Google Analytics: Disparar Evento",
+            "type": "smarkioGoogleAnalyticsEvent",
+            "next": "action-5a145e0bdb7a78-62323417",
+            "data": {
+                "event_category": "credito_consolidado",
+                "event_action": "birthdate",
+                "event_label": null,
+                "event_value": null,
+                "analytics_id": ""
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7a78-62323417",
+            "name": "0026 - Escrever: Texto ou HTML",
+            "next": "action-5a145e0bdb7a86-40300389",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "Muito bem. Aguarde um momento pf."
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7a86-40300389",
+            "name": "0027 - Navega\u00e7\u00e3o: Atrasar pr\u00f3xima a\u00e7\u00e3o",
+            "type": "smarkioDelay",
+            "next": "action-5a145e0bdb7a96-03117698",
+            "data": {
+                "delay": 2
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7a96-03117698",
+            "name": "0028 - Perguntar: Texto",
+            "type": "prompt",
+            "varname": "email",
+            "next": "1515425795231-9ll8-9efu-ygaz",
+            "additionalVarnames": [
+                "lead[email]"
+            ],
+            "data": {
+                "type": "text",
+                "text": "Estive a verificar e tenho uma solu\u00e7\u00e3o interessante para si. Indique-me o seu email.",
+                "validation": [
+                    {
+                        "type": "regex",
+                        "setup": {
+                            "pattern": "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
+                            "flags": "i",
+                            "invalid_msg": "O email n\u00e3o \u00e9 v\u00e1lido"
+                        }
+                    }
+                ],
+                "valueParser": [
+                    "email",
+                    "trim"
+                ]
+            }
+        },
+        {
+            "id": "1515425795231-9ll8-9efu-ygaz",
+            "name": "0029 - Google Analytics: Disparar Evento",
+            "type": "smarkioGoogleAnalyticsEvent",
+            "next": "action-5a145e0bdb7aa3-77876896",
+            "data": {
+                "event_category": "credito_consolidado",
+                "event_action": "email",
+                "event_label": null,
+                "event_value": null,
+                "analytics_id": ""
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7aa3-77876896",
+            "name": "0030 - Navega\u00e7\u00e3o: Submeter informa\u00e7\u00e3o",
+            "type": "smarkioSubmit",
+            "next": "action-5a145e0bdb7ac4-46259937",
+            "data": {
+                "url": "https:\/\/adclickpt.smark.io\/api.php\/directlead\/f54468953ca43fb28cbb153a6b7273a9097deec6.json",
+                "postParameters": [],
+                "postHeaders": [],
+                "waitForResult": false,
+                "forceNewLead": true
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7ac4-46259937",
+            "name": "0031 - Navega\u00e7\u00e3o: Submeter informa\u00e7\u00e3o",
+            "type": "smarkioSubmit",
+            "next": "action-5a145e0bdb7ad4-40313814",
+            "data": {
+                "url": "http:\/\/v2.lctracking.com\/lead\/new?spid=1490",
+                "postParameters": [],
+                "postHeaders": [],
+                "waitForResult": false,
+                "forceNewLead": false
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7ad4-40313814",
+            "name": "0032 - Perguntar: Texto",
+            "type": "prompt",
+            "varname": "phone",
+            "next": "1515425901005-20qs-jcz6-ko6o",
+            "additionalVarnames": [
+                "lead[phone]"
+            ],
+            "data": {
+                "type": "text",
+                "text": "Obrigado. Para finalizar, indique o seu n\u00famero de telem\u00f3vel para enviar-lhe detalhes sobre a nossa sugest\u00e3o.",
+                "validation": [
+                    {
+                        "type": "regex",
+                        "setup": {
+                            "pattern": "^(?:(\\+351|00351|351)?)\\s*(?:2\\d|(?:9(?:3|6|2|1))|30)\\d\\s*\\d{3}\\s*\\d{3}$",
+                            "flags": null,
+                            "invalid_msg": "Apenas telefones portugueses suportados"
+                        }
+                    }
+                ],
+                "valueParser": [
+                    "trim"
+                ]
+            }
+        },
+        {
+            "id": "1515425901005-20qs-jcz6-ko6o",
+            "name": "0033 - Google Analytics: Disparar Evento",
+            "type": "smarkioGoogleAnalyticsEvent",
+            "next": "action-5a145e0bdb7ae2-28401509",
+            "data": {
+                "event_category": "credito_consolidado",
+                "event_action": "phone",
+                "event_label": null,
+                "event_value": null,
+                "analytics_id": ""
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7ae2-28401509",
+            "name": "0034 - Escrever: Texto ou HTML",
+            "next": "action-5a145e0bdb7af4-78826740",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "Muito bem {{%firstname%}}, vamos ent\u00e3o aos resultados. <script>dataLayer.push({'event': 'conversion_consolidado'});<\/script>"
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7af4-78826740",
+            "name": "0035 - Navega\u00e7\u00e3o: Submeter informa\u00e7\u00e3o",
+            "type": "smarkioSubmit",
+            "next": "action-5a145e0bdb7b03-59103433",
+            "data": {
+                "url": "https:\/\/adclickpt.smark.io\/api.php\/directlead\/f54468953ca43fb28cbb153a6b7273a9097deec6.json",
+                "postParameters": [],
+                "postHeaders": [],
+                "waitForResult": false,
+                "forceNewLead": false
+            }
+        },
+        {
+            "id": "action-5a145e0bdb7b03-59103433",
+            "name": "0036 - Navega\u00e7\u00e3o: Submeter informa\u00e7\u00e3o",
+            "type": "smarkioSubmit",
+            "next": "1511285219354-8r8q-huol-69pj",
+            "data": {
+                "url": "http:\/\/v2.lctracking.com\/lead\/new?_spid=1490",
+                "postParameters": {
+                    "credit_type_wanted": "consolidated_bankruptcy",
+                    "browser_version": "A"
+                },
+                "postHeaders": [],
+                "waitForResult": false,
+                "forceNewLead": false
+            }
+        },
+        {
+            "id": "1511285219354-8r8q-huol-69pj",
+            "name": "0037 - Escrever: Texto ou HTML",
+            "next": "1511285238393-5pmu-tnhd-82rj",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "O seu perfil foi aprovado. Vai ser contactado por um parceiro nosso em breve."
+            }
+        },
+        {
+            "id": "1511285238393-5pmu-tnhd-82rj",
+            "name": "0038 - Escrever: Texto ou HTML",
+            "next": null,
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "Obrigado pela visita, at\u00e9 breve!"
+            }
+        }
+    ],
+    "appId": "",
+    "secret": "",
+    "data": {
+        "name": "EKPT-Cr\u00e9dito Consolidado-100 Cr\u00e9ditos",
+        "version": 280,
+        "locale": "pt",
+        "chatVersion": 280,
+        "gaTrackerId": "",
+        "gaTrackingMode": ""
+    }
+}

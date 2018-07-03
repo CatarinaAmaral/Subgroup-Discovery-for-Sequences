@@ -1,0 +1,1753 @@
+{
+    "id": "Jobtide PT - Forma\u00e7\u00e3o (tr\u00e1fego directo - v3)",
+    "type": "sequence",
+    "steps": [
+        {
+            "id": "action-591ec8ea591470-03339709",
+            "name": "0001 - A - Hello",
+            "next": "action-591ec8ea5914e9-00213996",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "ol\u00e1, chamo-me Mariana Torres e sou consultora de Recursos Humanos no Jobtide"
+            }
+        },
+        {
+            "id": "action-591ec8ea5914e9-00213996",
+            "name": "0002 - Escrever: Texto ou HTML",
+            "next": "action-591ec8ea591502-96344296",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "a forma\u00e7\u00e3o \u00e9 um elemento decisivo na sele\u00e7\u00e3o de candidatos a emprego\n"
+            }
+        },
+        {
+            "id": "action-591ec8ea591502-96344296",
+            "name": "0003 - A - Advantages",
+            "next": "action-591ec8ea591518-52120697",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "ao fazeres um curso de forma\u00e7\u00e3o profissional aumentas a probabilidade de conseguires esse emprego que ambicionas"
+            }
+        },
+        {
+            "id": "action-591ec8ea591518-52120697",
+            "name": "0004 - A - Gender",
+            "type": "smarkioOptions",
+            "varname": "gender",
+            "next": "action-591ec8ea591539-13856088",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Senhor": "M",
+                    "Senhora": "F"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "tenho o prazer de estar a falar com um senhor ou uma senhora?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea591539-13856088",
+            "name": "0005 - A - Firstname",
+            "type": "prompt",
+            "varname": "firstname",
+            "next": "action-591ec8ea591546-77796778",
+            "additionalVarnames": [
+                "lead[first_name]"
+            ],
+            "data": {
+                "type": "text",
+                "text": "podes dizer-me qual \u00e9 o teu primeiro nome, por favor?",
+                "validation": [
+                    {
+                        "type": "regex",
+                        "setup": {
+                            "pattern": "^[A-Za-z\\s\\u0410-\\u044F\\u0401\\u0451\\u00C0-\\u00FF\\u00B5\\u00B4\\u02CA\\u0060\\u02CB\\u005E\\u02C6\\u223C\\u007E\\u02DC\\u00BA\\u00AA]+$",
+                            "flags": null,
+                            "invalid_msg": "penso que te enganaste... podes voltar a escrever o teu nome, por favor?"
+                        }
+                    },
+                    {
+                        "type": "length",
+                        "setup": {
+                            "min": null,
+                            "max": null,
+                            "invalid_msg": "penso que te enganaste... podes voltar a escrever o teu nome, por favor?"
+                        }
+                    }
+                ],
+                "valueParser": [
+                    "trim"
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591546-77796778",
+            "name": "0006 - A - Lastname",
+            "type": "prompt",
+            "varname": "lastname",
+            "next": "action-591ec8ea591554-51204593",
+            "additionalVarnames": [
+                "lead[last_name]"
+            ],
+            "data": {
+                "type": "text",
+                "text": "e o teu \u00faltimo nome?",
+                "validation": [
+                    {
+                        "type": "regex",
+                        "setup": {
+                            "pattern": "^[A-Za-z\\s\\u0410-\\u044F\\u0401\\u0451\\u00C0-\\u00FF\\u00B5\\u00B4\\u02CA\\u0060\\u02CB\\u005E\\u02C6\\u223C\\u007E\\u02DC\\u00BA\\u00AA]+$",
+                            "flags": null,
+                            "invalid_msg": "penso que te enganaste... podes dizer-me o teu \u00faltimo nome novamente, por favor?"
+                        }
+                    },
+                    {
+                        "type": "length",
+                        "setup": {
+                            "min": null,
+                            "max": null,
+                            "invalid_msg": "penso que te enganaste... podes dizer-me o teu \u00faltimo nome novamente, por favor?"
+                        }
+                    }
+                ],
+                "valueParser": [
+                    "trim"
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591554-51204593",
+            "name": "0007 - Google Analytics: Disparar Evento",
+            "type": "smarkioGoogleAnalyticsEvent",
+            "next": "action-591ec8ea591563-82565816",
+            "data": {
+                "event_category": "chat_formacao",
+                "event_action": "name",
+                "event_label": null,
+                "event_value": null,
+                "analytics_id": ""
+            }
+        },
+        {
+            "id": "action-591ec8ea591563-82565816",
+            "name": "0008 - Escrever: Texto ou HTML",
+            "next": "action-591ec8ea591578-01327166",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "muito prazer, {{%firstname%}} {{%lastname%}}"
+            }
+        },
+        {
+            "id": "action-591ec8ea591578-01327166",
+            "name": "0009 - A - Entities",
+            "next": "action-591ec8ea591590-38433051",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "o Jobtide prop\u00f5e diversos cursos que potenciam a obten\u00e7\u00e3o de emprego... j\u00e1 ajudamos centenas de pessoas a consegui-lo"
+            }
+        },
+        {
+            "id": "action-591ec8ea591590-38433051",
+            "name": "0010 - Situa\u00e7\u00e3o Profissional",
+            "type": "smarkioOptions",
+            "varname": "job_type",
+            "next": "action-591ec8ea5915b9-91866949",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "estou a trabalhar": "estou a trabalhar",
+                    "estou no desemprego": "estou no desemprego",
+                    "sou estudante": "sou estudante",
+                    "estou na reforma": "estou na reforma"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "diz-me {{%firstname%}}, qual \u00e9 a tua situa\u00e7\u00e3o profissional atualmente?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea5915b9-91866949",
+            "name": "0011 - Perguntar Sector Profissional",
+            "type": "smarkioOptions",
+            "varname": "job_sector",
+            "next": "action-591ec8ea5915d2-65805467",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Agricultura e Alimenta\u00e7\u00e3o": "Administra\u00e7\u00e3o e Secretariado",
+                    "Agricultura, Florestas e Pescas": "Agricultura, Florestas e Pescas",
+                    "Ambiente": "Ambiente",
+                    "Arquitetura e Design": "Arquitetura e Design",
+                    "Artes e Entretenimento": "Artes e Entretenimento",
+                    "Biotecnologia e Farm\u00e1cia": "Biotecnologia e Farm\u00e1cia",
+                    "Comercial e Vendas": "Comercial e Vendas",
+                    "Com\u00e9rcio e Retalho": "Com\u00e9rcio e Retalho",
+                    "Comunica\u00e7\u00e3o Social": "Comunica\u00e7\u00e3o Social",
+                    "Constru\u00e7\u00e3o Civil": "Constru\u00e7\u00e3o Civil",
+                    "Contact Centers e Help Desk": "Contact Centers e Help Desk",
+                    "Cuidados Animais": "Cuidados Animais",
+                    "Desporto": "Desporto",
+                    "Direito e Justi\u00e7a": "Direito e Justi\u00e7a",
+                    "Economia, Gest\u00e3o e Finan\u00e7as": "Economia, Gest\u00e3o e Finan\u00e7as",
+                    "Eletr\u00f3nica e Mec\u00e2nica": "Eletr\u00f3nica e Mec\u00e2nica",
+                    "Engenharia": "Engenharia",
+                    "Eventos e Promo\u00e7\u00f5es": "Eventos e Promo\u00e7\u00f5es",
+                    "Fiscalidade e Jur\u00eddico": "Fiscalidade e Jur\u00eddico",
+                    "Forma\u00e7\u00e3o e Educa\u00e7\u00e3o": "Forma\u00e7\u00e3o e Educa\u00e7\u00e3o",
+                    "Fotografia e Multimedia": "Fotografia e Multimedia",
+                    "Hotelaria e Turismo": "Hotelaria e Turismo",
+                    "Imobili\u00e1rio": "Imobili\u00e1rio",
+                    "Ind\u00fastria e Produ\u00e7\u00e3o": "Ind\u00fastria e Produ\u00e7\u00e3o",
+                    "L\u00ednguas": "L\u00ednguas",
+                    "Marketing e Publicidade": "Marketing e Publicidade",
+                    "Moda e Beleza": "Moda e Beleza",
+                    "Recursos Humanos": "Recursos Humanos",
+                    "Rela\u00e7\u00f5es P\u00fablicas": "Rela\u00e7\u00f5es P\u00fablicas",
+                    "Sa\u00fade": "Sa\u00fade",
+                    "Seguran\u00e7a e Vigil\u00e2ncia": "Seguran\u00e7a e Vigil\u00e2ncia",
+                    "Seguros": "Seguros",
+                    "Servi\u00e7os Dom\u00e9sticos e Limpezas": "Servi\u00e7os Dom\u00e9sticos e Limpezas",
+                    "Servi\u00e7os Sociais": "Servi\u00e7os Sociais",
+                    "Tecnologias de Informa\u00e7\u00e3o": "Tecnologias de Informa\u00e7\u00e3o",
+                    "Telecomunica\u00e7\u00f5es": "Telecomunica\u00e7\u00f5es",
+                    "Transportes e Log\u00edstica": "Transportes e Log\u00edstica",
+                    "Outros": "Outros"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "e qual \u00e9 o teu setor profissional {{%firstname%}}?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea5915d2-65805467",
+            "name": "0012 - Escolaridade",
+            "type": "smarkioOptions",
+            "varname": "masterd_levelstudyid",
+            "next": "action-591ec8ea5915e9-70038839",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "8\u00ba Ano ou menor": "25",
+                    "9\u00ba Ano conclu\u00eddo": "26",
+                    "10\u00ba Ano conclu\u00eddo": "27",
+                    "11\u00ba Ano conclu\u00eddo": "31",
+                    "12\u00ba Ano conclu\u00eddo": "28",
+                    "Bacharelato": "29",
+                    "Licenciatura": "20",
+                    "Mestrado": "21"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "para sugerir os cursos com maior potencial para ti, preciso de saber a tua escolaridade",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea5915e9-70038839",
+            "name": "0013 - Perguntar \u00c1rea de Forma\u00e7\u00e3o que Lhe Interessa",
+            "type": "smarkioOptions",
+            "varname": "course_category",
+            "next": "action-591ec8ea5915f1-17892615",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Ambiente": "Ambiente",
+                    "Arte, Desenho e Fotografia": "Arte, Desenho e Fotografia",
+                    "Cuidados Animais": "Cuidados Animais",
+                    "Contabilidade, Gest\u00e3o e Finan\u00e7as": "Contabilidade, Gest\u00e3o e Finan\u00e7as",
+                    "Eletr\u00f3nica e Mec\u00e2nica": "Eletr\u00f3nica e Mec\u00e2nica",
+                    "Forma\u00e7\u00e3o e Educa\u00e7\u00e3o": "Forma\u00e7\u00e3o e Educa\u00e7\u00e3o",
+                    "Hotelaria e Turismo": "Hotelaria e Turismo",
+                    "Inform\u00e1tica": "Inform\u00e1tica",
+                    "L\u00ednguas": "L\u00ednguas",
+                    "Marketing e Vendas": "Marketing e Vendas",
+                    "Moda e Est\u00e9tica": "Moda e Est\u00e9tica",
+                    "Sa\u00fade": "Sa\u00fade",
+                    "Seguran\u00e7a": "Seguran\u00e7a"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "e que \u00e1rea de forma\u00e7\u00e3o te interessa mais, {{%firstname%}}?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea5915f1-17892615",
+            "name": "0014 - Google Analytics: Disparar Evento Interests",
+            "type": "smarkioGoogleAnalyticsEvent",
+            "next": "action-591ec8ea591608-36252167",
+            "data": {
+                "event_category": "chat_formacao",
+                "event_action": "interests",
+                "event_label": "",
+                "event_value": null,
+                "analytics_id": ""
+            }
+        },
+        {
+            "id": "action-591ec8ea591608-36252167",
+            "name": "0015 - Perguntar Data de Nascimento",
+            "type": "prompt",
+            "varname": "birthdate",
+            "additionalVarnames": [
+                "lead[birth_date]"
+            ],
+            "next": "action-591ec8ea591613-76159057",
+            "data": {
+                "type": "time",
+                "validation": {
+                    "type": "date",
+                    "setup": {
+                        "min_date": null,
+                        "max_date": null,
+                        "invalid_msg": "ocorreu um erro... podes repetir, por favor?"
+                    }
+                },
+                "options": {
+                    "retryPrompt": "ocorreu um erro... podes repetir, por favor?"
+                },
+                "valueParser": "smarkioDate",
+                "text": "qual \u00e9 a tua data de nascimento, {{%firstname%}}?",
+                "link_to_lead": "lead[birth_date]",
+                "retryMessage": "ocorreu um erro... podes repetir, por favor?"
+            }
+        },
+        {
+            "id": "action-591ec8ea591613-76159057",
+            "name": "0016 - Google Analytics: Disparar Evento Birthdate",
+            "type": "smarkioGoogleAnalyticsEvent",
+            "next": "action-591ec8ea591630-83355892",
+            "data": {
+                "event_category": "chat_formacao",
+                "event_action": "birthdate",
+                "event_label": "",
+                "event_value": null,
+                "analytics_id": ""
+            }
+        },
+        {
+            "id": "action-591ec8ea591630-83355892",
+            "name": "0017 - Perguntar: C\u00f3digo Postal",
+            "type": "prompt",
+            "varname": "postalcode1",
+            "next": "1503920794018-gyt3-q470-advt",
+            "additionalVarnames": [
+                "lead[zip_code]"
+            ],
+            "data": {
+                "type": "text",
+                "text": "para sugerir a melhor solu\u00e7\u00e3o perto de ti, preciso de saber o teu c\u00f3digo postal",
+                "validation": [
+                    {
+                        "type": "regex",
+                        "setup": {
+                            "pattern": "^\\d{4}-\\d{3}$",
+                            "flags": null,
+                            "invalid_msg": "este c\u00f3digo postal n\u00e3o \u00e9 v\u00e1lido, {{%firstname%}}... podes voltar a escrever por favor?"
+                        }
+                    }
+                ],
+                "valueParser": [
+                    "trim"
+                ]
+            }
+        },
+        {
+            "id": "1503920794018-gyt3-q470-advt",
+            "name": "0018 - Google Analytics: Disparar Evento Postalcode",
+            "type": "smarkioGoogleAnalyticsEvent",
+            "next": "action-591ec8ea591647-12510128",
+            "data": {
+                "event_category": "chat_formacao",
+                "event_action": "postalcode",
+                "event_label": null,
+                "event_value": null,
+                "analytics_id": ""
+            }
+        },
+        {
+            "id": "action-591ec8ea591647-12510128",
+            "name": "0019 - Avan\u00e7ado: Vari\u00e1veis a partir de URL",
+            "type": "SmarkioPopulateFromUrl",
+            "next": "\"1496931857995-7bvo-5rfm-xpwj\"",
+            "data": {
+                "type": "jsonp",
+                "url": "http:\/\/postalcode.adctools.com\/api\/postalcode\/{{%postalcode1%}}\/masterd\/information_adapted?prefix_fallback=true",
+                "urlApiRemoteText": "",
+                "proxyUrl": "https:\/\/core-eu.smark.io\/chat\/action_proxy\/110754",
+                "linkToLead": [
+                    {
+                        "var_name": "district_id",
+                        "lead_attribute": "extra[masterd_provinceid]",
+                        "new_variable": "district_id"
+                    },
+                    {
+                        "var_name": "city_id",
+                        "lead_attribute": "extra[masterd_cityid]",
+                        "new_variable": "city_id"
+                    }
+                ],
+                "ignoreNotMappedFields": false
+            }
+        },
+        {
+            "id": "1496931857995-7bvo-5rfm-xpwj",
+            "next": "action-591ec8ea591653-02672853",
+            "type": "smarkioNotSupported",
+            "data": {
+                "text": "Action Type Not supported"
+            }
+        },
+        {
+            "id": "action-591ec8ea591653-02672853",
+            "name": "0021 - Avan\u00e7ado: Vari\u00e1veis a partir de URL",
+            "type": "SmarkioPopulateFromUrl",
+            "next": "\"action-591ec8ea591663-38356434\"",
+            "data": {
+                "type": "jsonp",
+                "url": "http:\/\/postalcode.adctools.com\/api\/postalcode\/{{%postalcode1%}}\/information_adapted?prefix_fallback=true",
+                "urlApiRemoteText": "",
+                "proxyUrl": "https:\/\/core-eu.smark.io\/chat\/action_proxy\/110755",
+                "linkToLead": [
+                    {
+                        "var_name": "parish",
+                        "lead_attribute": "lead[city]",
+                        "new_variable": "parish"
+                    }
+                ],
+                "ignoreNotMappedFields": false
+            }
+        },
+        {
+            "id": "action-591ec8ea591663-38356434",
+            "name": "0022 - Navega\u00e7\u00e3o: Mover para A\u00e7\u00e3o",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea591680-75466864",
+            "data": {
+                "nextStep": "action-591ec8ea591680-75466864",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea5916d7-96720240",
+                        "condition": "{\"operator\":\"!=\",\"operand\":{\"key\":\"district_id\",\"value\":\"RCH\"},\"operands\":[\"$district_id\",\"RCH\"],\"type\":\"variable\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591680-75466864",
+            "name": "0023 - Perguntar: c\u00f3digo postal",
+            "type": "prompt",
+            "varname": "postalcode1",
+            "next": "action-591ec8ea591691-80956858",
+            "additionalVarnames": [
+                "lead[zip_code]"
+            ],
+            "data": {
+                "type": "text",
+                "text": "este c\u00f3digo postal n\u00e3o \u00e9 v\u00e1lido, {{%firstname%}}... podes voltar a escrever por favor?",
+                "validation": [
+                    {
+                        "type": "regex",
+                        "setup": {
+                            "pattern": "^\\d{4}-\\d{3}$",
+                            "flags": null,
+                            "invalid_msg": ""
+                        }
+                    }
+                ],
+                "valueParser": [
+                    "trim"
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591691-80956858",
+            "name": "0024 - Avan\u00e7ado: Vari\u00e1veis a partir de URL",
+            "type": "SmarkioPopulateFromUrl",
+            "next": "\"1496932989903-qs51-zfoj-qs2u\"",
+            "data": {
+                "type": "jsonp",
+                "url": "http:\/\/postalcode.adctools.com\/api\/postalcode\/{{%postalcode1%}}\/masterd\/information_adapted?prefix_fallback=true",
+                "urlApiRemoteText": "",
+                "proxyUrl": "https:\/\/core-eu.smark.io\/chat\/action_proxy\/110758",
+                "linkToLead": [
+                    {
+                        "var_name": "district_id",
+                        "lead_attribute": "extra[masterd_district_id]",
+                        "new_variable": "district_id"
+                    },
+                    {
+                        "var_name": "city_id",
+                        "lead_attribute": "extra[masterd_city_id]",
+                        "new_variable": "city_id"
+                    }
+                ],
+                "ignoreNotMappedFields": false
+            }
+        },
+        {
+            "id": "1496932989903-qs51-zfoj-qs2u",
+            "next": "action-591ec8ea5916a0-63052688",
+            "type": "smarkioNotSupported",
+            "data": {
+                "text": "Action Type Not supported"
+            }
+        },
+        {
+            "id": "action-591ec8ea5916a0-63052688",
+            "name": "0026 - Avan\u00e7ado: Vari\u00e1veis a partir de URL",
+            "type": "SmarkioPopulateFromUrl",
+            "next": "\"action-591ec8ea5916b2-64321094\"",
+            "data": {
+                "type": "jsonp",
+                "url": "http:\/\/postalcode.adctools.com\/api\/postalcode\/{{%postalcode1%}}\/information_adapted?prefix_fallback=true",
+                "urlApiRemoteText": "",
+                "proxyUrl": "https:\/\/core-eu.smark.io\/chat\/action_proxy\/110759",
+                "linkToLead": [
+                    {
+                        "var_name": "parish",
+                        "lead_attribute": "lead[city]",
+                        "new_variable": "parish"
+                    }
+                ],
+                "ignoreNotMappedFields": false
+            }
+        },
+        {
+            "id": "action-591ec8ea5916b2-64321094",
+            "name": "0027 - Navega\u00e7\u00e3o: Mover para A\u00e7\u00e3o",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea5916d7-96720240",
+            "data": {
+                "nextStep": "action-591ec8ea5916d7-96720240",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591680-75466864",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"district_id\",\"value\":\"RCH\"},\"operands\":[\"$district_id\",\"RCH\"],\"type\":\"variable\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea5916d7-96720240",
+            "name": "0028 - Perguntar: morada",
+            "type": "prompt",
+            "varname": "address",
+            "next": "1503925180324-iujl-1q5v-t6tw",
+            "additionalVarnames": [
+                "lead[address]"
+            ],
+            "data": {
+                "type": "text",
+                "text": "obrigada. J\u00e1 agora, para ficar com o teu curr\u00edculo preenchido, podes indicar a tua morada completa por favor, {{%firstname%}}?",
+                "validation": [
+                    {
+                        "type": "length",
+                        "setup": {
+                            "min": null,
+                            "max": null,
+                            "invalid_msg": "a morada que escreveste n\u00e3o \u00e9 v\u00e1lida, {{%firstname%}}... podes repetir, por favor?"
+                        }
+                    }
+                ],
+                "valueParser": [
+                    "trim"
+                ]
+            }
+        },
+        {
+            "id": "1503925180324-iujl-1q5v-t6tw",
+            "name": "0029 - Valida\u00e7\u00e3o da morada - tem mais de 5 letras?",
+            "type": "smarkioJump",
+            "next": "1503925226105-pfe8-726c-50p9",
+            "data": {
+                "nextStep": "1503925226105-pfe8-726c-50p9",
+                "targetRules": [
+                    {
+                        "step": "1503925271573-8ezf-ua7c-dcui",
+                        "condition": "{\"operator\":\"matchex\",\"operand\":{\"key\":\"address\",\"value\":\"([A-Za-z\\\\s\\\\\u00ba\\\\\u00aa\\\\\u00e7\\\\\u00e1\\\\\u00e3\\\\\u00e9\\\\\u00f3\\\\\u00fa\\\\,]{4,})+\",\"relativeAction\":\"action-591ec8ea591518-52120697\"},\"operands\":[\"$address\",\"([A-Za-z\\\\s\\\\\u00ba\\\\\u00aa\\\\\u00e7\\\\\u00e1\\\\\u00e3\\\\\u00e9\\\\\u00f3\\\\\u00fa\\\\,]{4,})+\"],\"type\":\"variable\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "1503925226105-pfe8-726c-50p9",
+            "name": "0030 - Navega\u00e7\u00e3o: Mover para 33 - morada n\u00e3o \u00e9 v\u00e1lida 1",
+            "type": "smarkioJump",
+            "next": "1503925271573-8ezf-ua7c-dcui",
+            "data": {
+                "nextStep": "1503925271573-8ezf-ua7c-dcui",
+                "targetRules": [
+                    {
+                        "step": "1503925487416-c401-42js-98we",
+                        "condition": ""
+                    }
+                ]
+            }
+        },
+        {
+            "id": "1503925271573-8ezf-ua7c-dcui",
+            "name": "0031 - Valida\u00e7\u00e3o da morada - letras + n\u00fameros?",
+            "type": "smarkioJump",
+            "next": "1503925324073-2fcx-j11y-onee",
+            "data": {
+                "nextStep": "1503925324073-2fcx-j11y-onee",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea5916f5-74577070",
+                        "condition": "{\"operator\":\"matchex\",\"operand\":{\"key\":\"address\",\"value\":\"([A-Za-z\\\\s\\\\\u00ba\\\\\u00aa\\\\\u00e7\\\\\u00e1\\\\\u00e3\\\\\u00e9\\\\\u00f3\\\\\u00fa\\\\,]{4,}[0-9]+)+\",\"relativeAction\":\"action-591ec8ea591518-52120697\"},\"operands\":[\"$address\",\"([A-Za-z\\\\s\\\\\u00ba\\\\\u00aa\\\\\u00e7\\\\\u00e1\\\\\u00e3\\\\\u00e9\\\\\u00f3\\\\\u00fa\\\\,]{4,}[0-9]+)+\"],\"type\":\"variable\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "1503925324073-2fcx-j11y-onee",
+            "name": "0032 - Valida\u00e7\u00e3o da morada - n\u00fameros + letras?",
+            "type": "smarkioJump",
+            "next": "1503925487416-c401-42js-98we",
+            "data": {
+                "nextStep": "1503925487416-c401-42js-98we",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea5916f5-74577070",
+                        "condition": "{\"operator\":\"matchex\",\"operand\":{\"key\":\"address\",\"value\":\"([0-9]+[A-Za-z\\\\s\\\\\u00ba\\\\\u00aa\\\\\u00e7\\\\\u00e1\\\\\u00e3\\\\\u00e9\\\\\u00f3\\\\\u00fa\\\\,]{4,})\",\"relativeAction\":\"action-591ec8ea591518-52120697\"},\"operands\":[\"$address\",\"([0-9]+[A-Za-z\\\\s\\\\\u00ba\\\\\u00aa\\\\\u00e7\\\\\u00e1\\\\\u00e3\\\\\u00e9\\\\\u00f3\\\\\u00fa\\\\,]{4,})\"],\"type\":\"variable\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "1503925487416-c401-42js-98we",
+            "name": "0033 - Perguntar: a morada que escreveste n\u00e3o \u00e9 v\u00e1lida",
+            "type": "prompt",
+            "varname": "address",
+            "next": "1503925549236-i48d-a7e4-r3uu",
+            "additionalVarnames": [
+                "lead[address]"
+            ],
+            "data": {
+                "type": "text",
+                "text": "a morada que escreveste n\u00e3o est\u00e1 completa, {{%firstname%}}... podes repetir, por favor?",
+                "validation": [
+                    {
+                        "type": "length",
+                        "setup": {
+                            "min": null,
+                            "max": null,
+                            "invalid_msg": "ainda n\u00e3o est\u00e1 bem... escreves novamente a morada por favor?"
+                        }
+                    }
+                ],
+                "valueParser": [
+                    "trim"
+                ]
+            }
+        },
+        {
+            "id": "1503925549236-i48d-a7e4-r3uu",
+            "name": "0034 - Navega\u00e7\u00e3o: Mover para 29 - Valida\u00e7\u00e3o da morada - 5 letras",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea5916f5-74577070",
+            "data": {
+                "nextStep": "action-591ec8ea5916f5-74577070",
+                "targetRules": [
+                    {
+                        "step": "1503925180324-iujl-1q5v-t6tw",
+                        "condition": ""
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea5916f5-74577070",
+            "name": "0035 - Escrever: est\u00e3o abertos cursos com boa taxa de empregabilidade",
+            "next": "action-591ec8ea591707-50223625",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "{{%firstname%}}, est\u00e3o abertos cursos com boa taxa de empregabilidade dentro dos teus interesses "
+            }
+        },
+        {
+            "id": "action-591ec8ea591707-50223625",
+            "name": "0036 - Lista Op\u00e7\u00f5es Contabilidade, Gest\u00e3o e Finan\u00e7as",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea591716-51942752",
+            "data": {
+                "nextStep": "action-591ec8ea591716-51942752",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591803-04832980",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$course_category\",\"value\":\"Contabilidade, Gest\u00e3o e Finan\u00e7as\",\"relativeAction\":\"action-591ec8ea5915e9-70038839\"},\"operands\":[\"$course_category\",\"Contabilidade, Gest\u00e3o e Finan\u00e7as\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591716-51942752",
+            "name": "0037 - Lista Op\u00e7\u00f5es Marketing e Vendas",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea591725-34332106",
+            "data": {
+                "nextStep": "action-591ec8ea591725-34332106",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591879-56048449",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$course_category\",\"value\":\"Marketing e Vendas\",\"relativeAction\":\"action-591ec8ea5915e9-70038839\"},\"operands\":[\"$course_category\",\"Marketing e Vendas\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591725-34332106",
+            "name": "0038 - Lista Op\u00e7\u00f5es Inform\u00e1tica",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea591741-72384069",
+            "data": {
+                "nextStep": "action-591ec8ea591741-72384069",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea5918a1-28559252",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$course_category\",\"value\":\"Inform\u00e1tica\",\"relativeAction\":\"action-591ec8ea5915e9-70038839\"},\"operands\":[\"$course_category\",\"Inform\u00e1tica\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591741-72384069",
+            "name": "0039 - Lista Op\u00e7\u00f5es Sa\u00fade",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea591751-59416202",
+            "data": {
+                "nextStep": "action-591ec8ea591751-59416202",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591854-34352972",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$course_category\",\"value\":\"Sa\u00fade\",\"relativeAction\":\"action-591ec8ea5915e9-70038839\"},\"operands\":[\"$course_category\",\"Sa\u00fade\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591751-59416202",
+            "name": "0040 - Lista Op\u00e7\u00f5es Eletr\u00f3nica e Mec\u00e2nica",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea591763-93703220",
+            "data": {
+                "nextStep": "action-591ec8ea591763-93703220",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea5918e5-28402209",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$course_category\",\"value\":\"Eletr\u00f3nica e Mec\u00e2nica\",\"relativeAction\":\"action-591ec8ea5915e9-70038839\"},\"operands\":[\"$course_category\",\"Eletr\u00f3nica e Mec\u00e2nica\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591763-93703220",
+            "name": "0041 - Lista Op\u00e7\u00f5es Hotelaria e Turismo",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea591786-09521897",
+            "data": {
+                "nextStep": "action-591ec8ea591786-09521897",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591902-41811175",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$course_category\",\"value\":\"Hotelaria e Turismo\",\"relativeAction\":\"action-591ec8ea5915e9-70038839\"},\"operands\":[\"$course_category\",\"Hotelaria e Turismo\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591786-09521897",
+            "name": "0042 - Lista Op\u00e7\u00f5es Forma\u00e7\u00e3o e Educa\u00e7\u00e3o",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea591792-44290664",
+            "data": {
+                "nextStep": "action-591ec8ea591792-44290664",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591938-03099416",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$course_category\",\"value\":\"Forma\u00e7\u00e3o e Educa\u00e7\u00e3o\",\"relativeAction\":\"action-591ec8ea5915e9-70038839\"},\"operands\":[\"$course_category\",\"Forma\u00e7\u00e3o e Educa\u00e7\u00e3o\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591792-44290664",
+            "name": "0043 - Lista Op\u00e7\u00f5es Ambiente",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea5917a5-94324897",
+            "data": {
+                "nextStep": "action-591ec8ea5917a5-94324897",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591959-70728330",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$course_category\",\"value\":\"Ambiente\",\"relativeAction\":\"action-591ec8ea5915e9-70038839\"},\"operands\":[\"$course_category\",\"Ambiente\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea5917a5-94324897",
+            "name": "0044 - Lista Op\u00e7\u00f5es Animais",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea5917b1-41893370",
+            "data": {
+                "nextStep": "action-591ec8ea5917b1-41893370",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591977-17445066",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$course_category\",\"value\":\"Cuidados Animais\",\"relativeAction\":\"action-591ec8ea5915e9-70038839\"},\"operands\":[\"$course_category\",\"Cuidados Animais\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea5917b1-41893370",
+            "name": "0045 - Lista Op\u00e7\u00f5es Moda e Est\u00e9tica",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea5917c7-39581947",
+            "data": {
+                "nextStep": "action-591ec8ea5917c7-39581947",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea5919a9-03397717",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$course_category\",\"value\":\"Moda e Est\u00e9tica\",\"relativeAction\":\"action-591ec8ea5915e9-70038839\"},\"operands\":[\"$course_category\",\"Moda e Est\u00e9tica\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea5917c7-39581947",
+            "name": "0046 - Lista Op\u00e7\u00f5es L\u00ednguas",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea5917e7-29056009",
+            "data": {
+                "nextStep": "action-591ec8ea5917e7-29056009",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea5919d3-52429502",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$course_category\",\"value\":\"L\u00ednguas\",\"relativeAction\":\"action-591ec8ea5915e9-70038839\"},\"operands\":[\"$course_category\",\"L\u00ednguas\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea5917e7-29056009",
+            "name": "0047 - Lista Op\u00e7\u00f5es Arte, Desenho e Fotografia",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea591803-04832980",
+            "data": {
+                "nextStep": "action-591ec8ea591803-04832980",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea5915e9-70038839",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$course_category\",\"value\":\"Arte, Desenho e Fotografia\",\"relativeAction\":\"action-591ec8ea5915e9-70038839\"},\"operands\":[\"$course_category\",\"Arte, Desenho e Fotografia\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591803-04832980",
+            "name": "0048 - Qual destes cursos te interessa? (Contabilidade, Gest\u00e3o e Finan\u00e7as)",
+            "type": "smarkioOptions",
+            "varname": "masterd_courseid",
+            "next": "action-591ec8ea591848-15062538",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Assistente Administrativo e Rececionista": "AAR",
+                    "Assistente Administrativo-Financeiro": "AAF",
+                    "Contabilidade e Fiscalidade": "contabilidade"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "qual destes cursos poderia interessar-te?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea591848-15062538",
+            "name": "0049 - Navega\u00e7\u00e3o: Vou enviar-te informa\u00e7\u00e3o sobre o curso",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea591854-34352972",
+            "data": {
+                "nextStep": "action-591ec8ea591854-34352972",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591a24-39522445",
+                        "condition": ""
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591854-34352972",
+            "name": "0050 - Qual destes cursos te interessa? (Sa\u00fade)",
+            "type": "smarkioOptions",
+            "varname": "masterd_courseid",
+            "next": "action-591ec8ea591865-36485683",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Auxiliar de Sa\u00fade": "TXS",
+                    "Auxiliar de Cl\u00ednica Dent\u00e1ria": "ADV",
+                    "Auxiliar de Geriatria": "AEP",
+                    "Massagem Desportiva e Reabilita\u00e7\u00e3o F\u00edsica CIT": "massagem-despor",
+                    "Auxiliar de Geriatria e Presta\u00e7\u00e3o de Cuidados a Idosos": "geriatria",
+                    "Parafarm\u00e1cia, Diet\u00e9tica e Nutri\u00e7\u00e3o": "XDN"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "qual destes cursos poderia interessar-te?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea591865-36485683",
+            "name": "0051 - Navega\u00e7\u00e3o: Vou enviar-te informa\u00e7\u00e3o sobre o curso",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea591879-56048449",
+            "data": {
+                "nextStep": "action-591ec8ea591879-56048449",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591a24-39522445",
+                        "condition": ""
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591879-56048449",
+            "name": "0052 - Qual destes cursos te interessa? (Marketing e Vendas)",
+            "type": "smarkioOptions",
+            "varname": "masterd_courseid",
+            "next": "action-591ec8ea591883-48904485",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Decora\u00e7\u00e3o de Lojas e Vitrinismo": "DLV",
+                    "Eventos, Rela\u00e7\u00f5es P\u00fablicas e Marketing": "ERM",
+                    "Marketing Digital": "MKDG"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "qual destes cursos poderia interessar-te?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea591883-48904485",
+            "name": "0053 - Navega\u00e7\u00e3o: Vou enviar-te informa\u00e7\u00e3o sobre o curso",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea5918a1-28559252",
+            "data": {
+                "nextStep": "action-591ec8ea5918a1-28559252",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591a24-39522445",
+                        "condition": ""
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea5918a1-28559252",
+            "name": "0054 - Qual destes cursos te interessa? (Inform\u00e1tica)",
+            "type": "smarkioOptions",
+            "varname": "masterd_courseid",
+            "next": "1496314367298-m9pq-dtqf-a8tu",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Manuten\u00e7\u00e3o e Repara\u00e7\u00e3o de Desktops e Port\u00e1teis com Certifica\u00e7\u00e3o Microsoft": "PWSF",
+                    "HelpDesk \/ Suporte T\u00e9cnico": "HLPD",
+                    "Desenvolvimento de Projetos Multim\u00e9dia": "PMD",
+                    "Programa\u00e7\u00e3o Android": "DRO",
+                    "Curso de Web Design": "WBD",
+                    "Manuten\u00e7\u00e3o e Repara\u00e7\u00e3o de Desktops e Port\u00e1teis com Certifica\u00e7\u00e3o CompTIA IT Fundamentals": "CIT",
+                    "Certifica\u00e7\u00e3o MCSA Windows Server 2012 - Prepara\u00e7\u00e3o": "PWS2"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "qual destes cursos poderia interessar-te?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "1496314367298-m9pq-dtqf-a8tu",
+            "name": "0055 - Navega\u00e7\u00e3o: Vou enviar-te informa\u00e7\u00e3o sobre o curso",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea5918c9-37774329",
+            "data": {
+                "nextStep": "action-591ec8ea5918c9-37774329",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591a24-39522445",
+                        "condition": ""
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea5918c9-37774329",
+            "name": "0056 - apagar este",
+            "type": "smarkioOptions",
+            "varname": "masterd_courseid",
+            "next": "action-591ec8ea5918e5-28402209",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Manuten\u00e7\u00e3o e Repara\u00e7\u00e3o de Desktops e Port\u00e1teis com Certifica\u00e7\u00e3o Microsoft": "PWSF",
+                    "Programa\u00e7\u00e3o Android": "DRO",
+                    "Certifica\u00e7\u00e3o MCSA Windows Server 2012 - Prepara\u00e7\u00e3o": "PWS2",
+                    "Curso de Web Design": "WBD",
+                    "HelpDesk \/ Suporte T\u00e9cnico": "HLPD"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "qual destes cursos poderia interessar-te?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea5918e5-28402209",
+            "name": "0057 - Qual destes cursos te interessa? (Eletr\u00f3nica e Mec\u00e2nica)",
+            "type": "smarkioOptions",
+            "varname": "masterd_courseid",
+            "next": "action-591ec8ea5918f4-35473311",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Electr\u00f3nica Geral": "eletronica",
+                    "Diagn\u00f3stico e Repara\u00e7\u00e3o Eletr\u00f3nica Autom\u00f3vel": "DREA",
+                    "Reparador de Equipamento M\u00e9dico e Hospitalar": "ELCM",
+                    "Instala\u00e7\u00e3o de Alarmes": "IAL",
+                    "Diagn\u00f3stico e Repara\u00e7\u00e3o de Eletr\u00f3nica de Consumo": "DREC",
+                    "Manuten\u00e7\u00e3o Industrial": "MIP",
+                    "Programa\u00e7\u00e3o de Automa\u00e7\u00e3o Industrial": "APP"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "qual destes cursos poderia interessar-te?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea5918f4-35473311",
+            "name": "0058 - Navega\u00e7\u00e3o: Vou enviar-te informa\u00e7\u00e3o sobre o curso",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea591902-41811175",
+            "data": {
+                "nextStep": "action-591ec8ea591902-41811175",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591a24-39522445",
+                        "condition": ""
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591902-41811175",
+            "name": "0059 - Qual destes cursos te interessa? (Hotelaria e Turismo)",
+            "type": "smarkioOptions",
+            "varname": "masterd_courseid",
+            "next": "action-591ec8ea591917-96860933",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "T\u00e9cnico de Turismo": "TAV"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "qual destes cursos poderia interessar-te?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea591917-96860933",
+            "name": "0060 - Navega\u00e7\u00e3o: Vou enviar-te informa\u00e7\u00e3o sobre o curso",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea591938-03099416",
+            "data": {
+                "nextStep": "action-591ec8ea591938-03099416",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591a24-39522445",
+                        "condition": ""
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591938-03099416",
+            "name": "0061 - Qual destes cursos te interessa? (Educa\u00e7\u00e3o)",
+            "type": "smarkioOptions",
+            "varname": "masterd_courseid",
+            "next": "action-591ec8ea591946-64015210",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Auxiliar de A\u00e7\u00e3o Educativa": "AXAE",
+                    "Auxiliar de Educa\u00e7\u00e3o Infantil e Babysitting": "AEIB"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "qual destes cursos poderia interessar-te?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea591946-64015210",
+            "name": "0062 - Navega\u00e7\u00e3o: Vou enviar-te informa\u00e7\u00e3o sobre o curso",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea591959-70728330",
+            "data": {
+                "nextStep": "action-591ec8ea591959-70728330",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591a24-39522445",
+                        "condition": ""
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591959-70728330",
+            "name": "0063 - Qual destes cursos te interessa? (Ambiente)",
+            "type": "smarkioOptions",
+            "varname": "masterd_courseid",
+            "next": "action-591ec8ea591968-51956944",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Gest\u00e3o Agr\u00edcola": "GSTA",
+                    "Energia Renov\u00e1veis": "ENR",
+                    "Energia Solar": "ENSL"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "qual destes cursos poderia interessar-te?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea591968-51956944",
+            "name": "0064 - Navega\u00e7\u00e3o: Vou enviar-te informa\u00e7\u00e3o sobre o curso",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea591977-17445066",
+            "data": {
+                "nextStep": "action-591ec8ea591977-17445066",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591a24-39522445",
+                        "condition": ""
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591977-17445066",
+            "name": "0065 - Qual destes cursos te interessa? (Cuidados Animais)",
+            "type": "smarkioOptions",
+            "varname": "masterd_courseid",
+            "next": "action-591ec8ea591982-09009227",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Auxiliar de Veterin\u00e1ria": "ADV",
+                    "Curso de Tosquia e Grooming": "TOG"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "qual destes cursos poderia interessar-te?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea591982-09009227",
+            "name": "0066 - Navega\u00e7\u00e3o: Vou enviar-te informa\u00e7\u00e3o sobre o curso",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea5919a9-03397717",
+            "data": {
+                "nextStep": "action-591ec8ea5919a9-03397717",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591a24-39522445",
+                        "condition": ""
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea5919a9-03397717",
+            "name": "0067 - Qual destes cursos te interessa? (Moda e Est\u00e9tica)",
+            "type": "smarkioOptions",
+            "varname": "masterd_courseid",
+            "next": "action-591ec8ea5919b8-10294930",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Curso de Cabeleireiro Unissexo": "cabeleireiro",
+                    "Curso de Est\u00e9tica": "estetica",
+                    "Curso de Barbeiro": "BARBEIRO",
+                    "Corte e Confec\u00e7\u00e3o": "Moda",
+                    "Curso de Manicura, Pedicura e Epila\u00e7\u00e3o": "Man-Ped-Dep",
+                    "Massagem Desportiva e Reabilita\u00e7\u00e3o F\u00edsica CIT": "massagem-despor",
+                    "Curso de Massagem Vital Corporal": "vital",
+                    "Curso de Reflexologia Podal": "reflex-podal"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "qual destes cursos poderia interessar-te?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea5919b8-10294930",
+            "name": "0068 - Navega\u00e7\u00e3o: Vou enviar-te informa\u00e7\u00e3o sobre o curso",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea5919d3-52429502",
+            "data": {
+                "nextStep": "action-591ec8ea5919d3-52429502",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591a24-39522445",
+                        "condition": ""
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea5919d3-52429502",
+            "name": "0069 - Qual destes cursos te interessa? (L\u00ednguas)",
+            "type": "smarkioOptions",
+            "varname": "masterd_courseid",
+            "next": "action-591ec8ea5919e6-17607777",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Curso de Ingl\u00eas": "Ingles"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "qual destes cursos poderia interessar-te?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea5919e6-17607777",
+            "name": "0070 - Navega\u00e7\u00e3o: Vou enviar-te informa\u00e7\u00e3o sobre o curso",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea5919f1-70942588",
+            "data": {
+                "nextStep": "action-591ec8ea5919f1-70942588",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591a24-39522445",
+                        "condition": ""
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea5919f1-70942588",
+            "name": "0071 - Qual destes cursos te interessa? (Arte, Desenho e Fotografia)",
+            "type": "smarkioOptions",
+            "varname": "masterd_courseid",
+            "next": "action-591ec8ea591a24-39522445",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "Curso de Desenvolvimento de Projetos Multim\u00e9dia": "PMD"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "v\u00ea este curso que temos para ti",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea591a24-39522445",
+            "name": "0072 - vou enviar-te informa\u00e7\u00e3o sobre o curso",
+            "next": "action-591ec8ea591a43-96422857",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "muito bem {{%firstname%}}! Vou enviar-te informa\u00e7\u00e3o sobre este curso, sem qualquer compromisso\n<script>\ndataLayer.push({'course_id': '{{%masterd_courseid%}}'});\n<\/script>"
+            }
+        },
+        {
+            "id": "action-591ec8ea591a43-96422857",
+            "name": "0073 - Termos",
+            "type": "smarkioOptions",
+            "varname": "terms",
+            "next": "action-591ec8ea591a51-71009573",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "sim": "yes",
+                    "n\u00e3o": "no"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "aceitas receber comunica\u00e7\u00f5es de marketing direto nossas e dos nossos parceiros de educa\u00e7\u00e3o e emprego?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea591a51-71009573",
+            "name": "0074 - Navega\u00e7\u00e3o: Mover para Perguntar Email",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea591a61-25248527",
+            "data": {
+                "nextStep": "action-591ec8ea591a61-25248527",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591a88-41613756",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$terms\",\"value\":\"yes\",\"relativeAction\":\"action-591ec8ea591a43-96422857\"},\"operands\":[\"$terms\",\"yes\"],\"type\":\"\"}"
+                    },
+                    {
+                        "step": "action-591ec8ea591a61-25248527",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$terms\",\"value\":\"no\",\"relativeAction\":\"action-591ec8ea591a43-96422857\"},\"operands\":[\"$terms\",\"no\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591a61-25248527",
+            "name": "0075 - termos 2\u00aa vez",
+            "type": "smarkioOptions",
+            "varname": "terms",
+            "next": "action-591ec8ea591a72-82069051",
+            "data": {
+                "type": "choice",
+                "options": {
+                    "sim": "yes",
+                    "n\u00e3o": "no"
+                },
+                "valueParser": "smarkioOptionsFromUrl",
+                "text": "para receberes informa\u00e7\u00f5es sobre o curso que te sugeri precisas aceitar os termos e condi\u00e7\u00f5es, caso contr\u00e1rio legalmente n\u00e3o poderei ajudar. Aceitas?",
+                "searchable": false,
+                "no_options_found": "N\u00e3o existe nenhuma op\u00e7\u00e3o que contenha '{{%%response%%}}', experimente outras palavras",
+                "start_hint": "Envie uma mensagem para obter algumas op\u00e7\u00f5es",
+                "validation": [
+                    {
+                        "type": "notEmpty",
+                        "setup": {
+                            "invalid_msg": "Por favor escolha uma op\u00e7\u00e3o da lista"
+                        }
+                    }
+                ],
+                "invalid_option_selected": "Por favor escolha uma op\u00e7\u00e3o da lista"
+            }
+        },
+        {
+            "id": "action-591ec8ea591a72-82069051",
+            "name": "0076 - Navega\u00e7\u00e3o: Mover para A\u00e7\u00e3o",
+            "type": "smarkioJump",
+            "next": "action-591ec8ea591a88-41613756",
+            "data": {
+                "nextStep": "action-591ec8ea591a88-41613756",
+                "targetRules": [
+                    {
+                        "step": "action-591ec8ea591b51-65154538",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$terms\",\"value\":\"no\",\"relativeAction\":\"action-591ec8ea591a61-25248527\"},\"operands\":[\"$terms\",\"no\"],\"type\":\"\"}"
+                    },
+                    {
+                        "step": "action-591ec8ea591a88-41613756",
+                        "condition": "{\"operator\":\"==\",\"operand\":{\"key\":\"$terms\",\"value\":\"yes\",\"relativeAction\":\"action-591ec8ea591a61-25248527\"},\"operands\":[\"$terms\",\"yes\"],\"type\":\"\"}"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591a88-41613756",
+            "name": "0077 - Email",
+            "type": "prompt",
+            "varname": "email",
+            "next": "action-591ec8ea591a90-05591824",
+            "additionalVarnames": [
+                "lead[email]"
+            ],
+            "data": {
+                "type": "text",
+                "text": "muito bem {{%firstname%}}. Qual \u00e9 o teu email?",
+                "validation": [
+                    {
+                        "type": "regex",
+                        "setup": {
+                            "pattern": "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
+                            "flags": "i",
+                            "invalid_msg": "penso que te enganaste... podes voltar a escrever o teu email, por favor?"
+                        }
+                    }
+                ],
+                "valueParser": [
+                    "email",
+                    "trim"
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591a90-05591824",
+            "name": "0078 - SUBMIT",
+            "type": "smarkioSubmit",
+            "next": "action-591ec8ea591aa1-48139625",
+            "data": {
+                "url": "http:\/\/v2.lctracking.com\/lead\/new?_t_spid=2316&masterd_pilot=317&masterd_support=Internet-Ncursos.net&masterd_forward=http%3A%2F%2Fwww.jobtide.pt%2F&masterd_countryid=203",
+                "postParameters": {
+                    "masterd_cityid": "{{%masterd_api_city_id%}}",
+                    "masterd_provinceid": "{{%masterd_api_province_id%}}",
+                    "course_id": "{{%masterd_courseid%}}",
+                    "address_street": "{{%address%}}",
+                    "scholarity_level": "{{%masterd_levelstudyid.text%}}",
+                    "city": "{{%city%}}",
+                    "course": "{{%masterd_courseid.text%}}"
+                },
+                "postHeaders": {
+                    "": ""
+                },
+                "waitForResult": true,
+                "forceNewLead": false
+            }
+        },
+        {
+            "id": "action-591ec8ea591aa1-48139625",
+            "name": "0079 - Navega\u00e7\u00e3o: Submeter informa\u00e7\u00e3o",
+            "type": "smarkioSubmit",
+            "next": "action-591ec8ea591ac2-19400261",
+            "data": {
+                "url": "https:\/\/adclickpt.smark.io\/api.php\/directlead\/f933c1a02d0cd19db2e87ce51b72a179913d6555.json",
+                "postParameters": {
+                    "extra[course]": "{{%masterd_courseid.text%}}"
+                },
+                "postHeaders": [],
+                "waitForResult": false,
+                "forceNewLead": false
+            }
+        },
+        {
+            "id": "action-591ec8ea591ac2-19400261",
+            "name": "0080 - Google Analytics: Disparar Evento Email",
+            "type": "smarkioGoogleAnalyticsEvent",
+            "next": "action-591ec8ea591ad3-46368809",
+            "data": {
+                "event_category": "chat_formacao",
+                "event_action": "email",
+                "event_label": "",
+                "event_value": null,
+                "analytics_id": ""
+            }
+        },
+        {
+            "id": "action-591ec8ea591ad3-46368809",
+            "name": "0081 - Phone",
+            "type": "prompt",
+            "varname": "phone",
+            "next": "action-591ec8ea591ae5-08963353",
+            "additionalVarnames": [
+                "lead[phone]"
+            ],
+            "data": {
+                "type": "text",
+                "text": "por \u00faltimo... caso seja necess\u00e1rio, para que n\u00famero de telefone podemos contactar-te, {{%firstname%}}?",
+                "validation": [
+                    {
+                        "type": "regex",
+                        "setup": {
+                            "pattern": "^(?:(\\+351|00351|351)?)\\s*(?:2\\d|(?:9(?:3|6|2|1))|30)\\d\\s*\\d{3}\\s*\\d{3}$",
+                            "flags": null,
+                            "invalid_msg": "este telefone n\u00e3o \u00e9 v\u00e1lido {{%firstname%}}... podes voltar a escrever o teu n\u00famero por favor?"
+                        }
+                    }
+                ],
+                "valueParser": [
+                    "trim"
+                ]
+            }
+        },
+        {
+            "id": "action-591ec8ea591ae5-08963353",
+            "name": "0082 - SUBMIT",
+            "type": "smarkioSubmit",
+            "next": "action-591ec8ea591af4-80087681",
+            "data": {
+                "url": "http:\/\/v2.lctracking.com\/lead\/new?_spid=2316&masterd_pilot=317&masterd_support=Internet-Ncursos.net&masterd_forward=http%3A%2F%2Fwww.jobtide.pt%2F&masterd_countryid=203",
+                "postParameters": {
+                    "masterd_cityid": "{{%masterd_api_city_id%}}",
+                    "masterd_provinceid": "{{%masterd_api_province_id%}}",
+                    "course_id": "{{%masterd_courseid%}}",
+                    "address_street": "{{%address%}}",
+                    "scholarity_level": "{{%masterd_levelstudyid.text%}}",
+                    "city": "{{%city%}}",
+                    "course": "{{%masterd_courseid.text%}}"
+                },
+                "postHeaders": {
+                    "": ""
+                },
+                "waitForResult": true,
+                "forceNewLead": false
+            }
+        },
+        {
+            "id": "action-591ec8ea591af4-80087681",
+            "name": "0083 - Navega\u00e7\u00e3o: Submeter informa\u00e7\u00e3o",
+            "type": "smarkioSubmit",
+            "next": "action-591ec8ea591b02-56737104",
+            "data": {
+                "url": "https:\/\/adclickpt.smark.io\/api.php\/directlead\/.json",
+                "postParameters": {
+                    "extra[course]": "{{%masterd_courseid.text%}}"
+                },
+                "postHeaders": [],
+                "waitForResult": false,
+                "forceNewLead": false
+            }
+        },
+        {
+            "id": "action-591ec8ea591b02-56737104",
+            "name": "0084 - Google Analytics: Disparar Evento Phone",
+            "type": "smarkioGoogleAnalyticsEvent",
+            "next": "action-591ec8ea591b27-37311274",
+            "data": {
+                "event_category": "chat_formacao",
+                "event_action": "phone",
+                "event_label": "",
+                "event_value": null,
+                "analytics_id": ""
+            }
+        },
+        {
+            "id": "action-591ec8ea591b27-37311274",
+            "name": "0085 - vamos contactar-te brevemente",
+            "next": "action-591ec8ea591b43-79235067",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "{{%firstname%}}, vamos contactar-te brevemente para te dar todas as informa\u00e7\u00f5es, sem qualquer compromisso  <script>dataLayer.push({'event': 'conversion_edu'});<\/script>"
+            }
+        },
+        {
+            "id": "action-591ec8ea591b43-79235067",
+            "name": "0086 - n\u00e3o esque\u00e7as de verificar o teu email",
+            "next": "action-591ec8ea591b51-65154538",
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "n\u00e3o esque\u00e7as de verificar o teu email"
+            }
+        },
+        {
+            "id": "action-591ec8ea591b51-65154538",
+            "name": "0087 - Obrigada",
+            "next": null,
+            "type": "smarkioDisplayInformation",
+            "data": {
+                "text": "obrigada {{%firstname%}} e que tenhas sucesso na conquista do teu emprego! :)"
+            }
+        }
+    ],
+    "appId": "",
+    "secret": "",
+    "data": {
+        "name": "Jobtide PT - Forma\u00e7\u00e3o (tr\u00e1fego directo - v3)",
+        "version": 145,
+        "locale": "pt",
+        "chatVersion": 145,
+        "gaTrackerId": "",
+        "gaTrackingMode": ""
+    }
+}
